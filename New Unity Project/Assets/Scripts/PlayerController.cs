@@ -6,8 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     SpriteRenderer sprite;
-    //Animator anim;
-    Animator anime;
+    Animator anim;
     //LA NABER LA
     public int moveSpeed;
     public float jumpSpeed = 1f, jumpFrequency = 1f, nextJumpTime;
@@ -24,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         /*DataMenager.Instance.BulletDamage += power;
         print(DataMenager.Instance.bulletDamage.ToString());*/
     }
@@ -41,32 +40,32 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         //anime.SetFloat("RunPlayer", Mathf.Abs(rb.velocity.x));
         flipFace();
-       // setAnim();
+        setAnim();
         Jump();
         
     }
     void flipFace()
     {
-        if (horizontal < 0)
+        if (horizontal > 0)
         {
-            sprite.flipX = true;
+            gameObject.transform.localScale = new Vector3(0.2f, transform.localScale.y, transform.localScale.z);
         }
-        else if(horizontal > 0)
+        else if (horizontal < 0)
         {
-            sprite.flipX = false;
+            gameObject.transform.localScale = new Vector3(-0.2f, transform.localScale.y, transform.localScale.z);
         }
     }
-    /*void setAnim()
+    void setAnim()
     {
         if (horizontal < 0 || horizontal > 0)
         {
-            anim.SetBool("RunAnimation", true);
+            anim.SetBool("isMove", true);
         }
         else
         {
-            anim.SetBool("RunAnimation", false);
+            anim.SetBool("isMove", false);
         }
-    }*/
+    }
     void Jump()
     {
         if(Input.GetAxis("Vertical") > 0 && isGrounded && (nextJumpTime < Time.timeSinceLevelLoad))
