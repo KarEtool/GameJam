@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sprite;
     //Animator anim;
+    Animator anime;
+    //LA NABER LA
     public int moveSpeed;
     public float jumpSpeed = 1f, jumpFrequency = 1f, nextJumpTime;
 
@@ -29,8 +31,7 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         HorizontalMove();
         OnGroundCheck();
     }
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+        anime.SetFloat("RunPlayer", Mathf.Abs(rb.velocity.x));
         flipFace();
        // setAnim();
         Jump();
