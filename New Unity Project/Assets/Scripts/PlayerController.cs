@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
-        anime.SetFloat("RunPlayer", Mathf.Abs(rb.velocity.x));
+        //anime.SetFloat("RunPlayer", Mathf.Abs(rb.velocity.x));
         flipFace();
        // setAnim();
         Jump();
