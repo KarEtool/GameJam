@@ -34,27 +34,16 @@ public class PlayerController : MonoBehaviour
     {        
         HorizontalMove();
         OnGroundCheck();
+        
     }
     void HorizontalMove()
     {
         horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         //anime.SetFloat("RunPlayer", Mathf.Abs(rb.velocity.x));
-        flipFace();
        // setAnim();
         Jump();
-        
-    }
-    void flipFace()
-    {
-        if (horizontal < 0)
-        {
-            sprite.flipX = true;
-        }
-        else if(horizontal > 0)
-        {
-            sprite.flipX = false;
-        }
+        flipFace();
     }
     /*void setAnim()
     {
@@ -80,6 +69,15 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundObjectPosition.position, groundCheckRadius, groundObjectLayer);
         //anim.SetBool("isGroundedAnim", isGrounded);
     }
-
-    
+    void flipFace()
+    {
+        if (horizontal > 0)
+        {
+            gameObject.transform.localScale = new Vector3(0.2f, transform.localScale.y, transform.localScale.z);
+        }
+        else if (horizontal < 0)
+        {
+            gameObject.transform.localScale = new Vector3(-0.2f, transform.localScale.y, transform.localScale.z);
+        }
+    }
 }
