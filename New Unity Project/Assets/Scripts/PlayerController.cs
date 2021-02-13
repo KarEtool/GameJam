@@ -40,14 +40,11 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         //anime.SetFloat("RunPlayer", Mathf.Abs(rb.velocity.x));
-<<<<<<< HEAD
+
        // setAnim();
         Jump();
         flipFace();
-=======
-        flipFace();
         setAnim();
-        Jump();
         
     }
     void flipFace()
@@ -60,7 +57,6 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(-0.2f, transform.localScale.y, transform.localScale.z);
         }
->>>>>>> b0e8062241b04adf086f373179d1bc83a3be9b26
     }
     void setAnim()
     {
@@ -86,15 +82,5 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundObjectPosition.position, groundCheckRadius, groundObjectLayer);
         //anim.SetBool("isGroundedAnim", isGrounded);
     }
-    void flipFace()
-    {
-        if (horizontal > 0)
-        {
-            gameObject.transform.localScale = new Vector3(0.2f, transform.localScale.y, transform.localScale.z);
-        }
-        else if (horizontal < 0)
-        {
-            gameObject.transform.localScale = new Vector3(-0.2f, transform.localScale.y, transform.localScale.z);
-        }
-    }
+    
 }
