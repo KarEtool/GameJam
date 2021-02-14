@@ -14,13 +14,12 @@ public class CutScene : MonoBehaviour
     {
         StartCoroutine(cutscene());
     }
-
     IEnumerator cutscene()
     {
         mainCamera.enabled = false;
         playerScript.enabled = false;
         cutCamera.SetActive(true);
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
         SceneManager.LoadScene(2);
         mainCamera.enabled = true;
         playerScript.enabled = true;
