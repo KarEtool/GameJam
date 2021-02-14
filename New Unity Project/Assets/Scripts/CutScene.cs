@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutScene : MonoBehaviour
 {
@@ -20,9 +21,9 @@ public class CutScene : MonoBehaviour
         playerScript.enabled = false;
         cutCamera.SetActive(true);
         yield return new WaitForSeconds(6f);
+        SceneManager.LoadScene(2);
         mainCamera.enabled = true;
         playerScript.enabled = true;
-        player.transform.localPosition = new Vector3(49.31305f, 9.3f, -43.63971f);
         cutCamera.SetActive(false);
     }
 }
