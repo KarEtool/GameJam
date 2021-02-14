@@ -17,12 +17,10 @@ public class CutScene : MonoBehaviour
     IEnumerator cutscene()
     {
         mainCamera.enabled = false;
-        playerScript.enabled = false;
         cutCamera.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2.2f);
         SceneManager.LoadScene(2);
         mainCamera.enabled = true;
-        playerScript.enabled = true;
         cutCamera.SetActive(false);
     }
 }
